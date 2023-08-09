@@ -34,14 +34,14 @@ today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
 var hh = today.getHours();
 var mm = today.getMinutes(); 
 
-        if(hh <= 13){
-          document.getElementById("cin").classList.remove('invisible');
-        }else if(hh >= 14){
-          document.getElementById("cout").classList.remove('invisible');
-            }else{
-alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-14.00 "+hh+":"+mm);
-liff.closeWindow();  
-            }
+        if(hh <= 10 && mm <= 0){ // ช่วงเวลาเช็คอิน
+document.getElementById("cin").classList.remove('invisible');
+}else if(hh >= 12 && mm >= 29){ // ช่วงเวลาเช็คเอ้าท์
+document.getElementById("cout").classList.remove('invisible');
+}else{
+alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 10.00 – 16.29");
+liff.closeWindow();
+}
 }
 
 
