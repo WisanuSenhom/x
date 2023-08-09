@@ -27,6 +27,8 @@
                     <!--a href="#">Forgot your password?</a-->
                 <!--/div-->
                 <button type="submit" class="btn">Login</button>
+                <div id="cin" class="invisible"><button id="cin" type="button" class="btn btn-success btn-lg btn-block" onclick="getLocation()">Check-In</button></div>
+                <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger btn-lg btn-block" onclick="getLocationOut()">Check-Out</button></div>
                 <div class="signup-link">
                     <a href="#">Signup</a>
                 </div>
@@ -84,7 +86,118 @@
         <span style="--i:48;"></span>
         <span style="--i:49;"></span>
     </div>
+<script>
+window.onload = function() {
+  initializeLiff('1654797991-wWYODmOq');
+}
 
+const xurl = "https://script.google.com/macros/";
+
+
+function checks(){
+
+var today = new Date();
+today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
+//document.getElementById("timer").innerHTML = today; // <p id="timer"></p>
+var hh = today.getHours();
+var mm = today.getMinutes(); 
+
+        if(hh <= 10){
+          document.getElementById("cin").classList.remove('invisible');
+        }else if(hh >= 16){
+          document.getElementById("cout").classList.remove('invisible');
+            }else{
+alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 10.00-16.00 ขณะนี้เวลา "+hh+":"+mm+" น.");
+liff.closeWindow();  
+            }
+}
+
+
+function initializeLiff(myLiffId) {
+    liff
+        .init({
+            liffId: myLiffId
+        })
+        .then(() => {
+            checks();
+        })
+        .catch((err) => {
+        });
+}
+
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+var sel = document.getElementById("typea").value;
+
+var ntex = document.getElementById("nte").value;
+     liff.getProfile().then(function(profile) {
+            var uid = profile.userId;
+            var uname = profile.displayName;
+        var xos = liff.getOS();
+  x.innerHTML = "Lat: " + position.coords.latitude + 
+  "<br>Long: " + position.coords.longitude+ 
+  "<br>userId: " + uid+ 
+  "<br>displayName: " + uname+
+  "<br>your OS: " + xos;
+var xmlhttp = new XMLHttpRequest();
+        var theUrl = xurl+"?ctype=In&sel="+sel+"&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        xmlhttp.open('GET', theUrl);
+        xmlhttp.send();
+            xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var jsonResponse = JSON.parse(this.responseText);
+        }
+        alert(jsonResponse.desc);
+        liff.closeWindow();
+      }});  
+}
+
+
+///////////////////////////////
+
+function getLocationOut() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPositionOut);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPositionOut(position) {
+var sel = document.getElementById("typea").value;
+
+var ntex = document.getElementById("nte").value;
+     liff.getProfile().then(function(profile) {
+            var uid = profile.userId;
+            var uname = profile.displayName;
+        var xos = liff.getOS();
+  x.innerHTML = "Lat: " + position.coords.latitude + 
+  "<br>Long: " + position.coords.longitude+ 
+  "<br>userId: " + uid+ 
+  "<br>displayName: " + uname+
+  "<br>your OS: " + xos;
+var xmlhttp = new XMLHttpRequest();
+        var theUrl = xurl+"?ctype=Out&sel="+sel+"&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        xmlhttp.open('GET', theUrl);
+        xmlhttp.send();
+            xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var jsonResponse = JSON.parse(this.responseText);
+        }
+        alert(jsonResponse.desc);
+        liff.closeWindow();
+      }});  
+}
+</script>
 
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
