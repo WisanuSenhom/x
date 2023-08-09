@@ -14,10 +14,13 @@
         <div class="login-box">
             <h2>Login</h2>
             <form action="#">
-                <div class="input-box">
-                    <input type="email" required>
-                    <label>Email</label>
-                </div>
+                <select class="form-control" id="typea">
+  					<option value="">ปกติ</option>
+  					<option value="ไปราชการ">ไปราชการ</option>
+  					<option value="ไปช่วยราชการ">ไปช่วยราชการ</option>
+  					<option value="มาช่วยราชการ">มาช่วยราชการ</option>
+    				<option value="อื่นๆ">อื่นๆ โปรดระบุเพิ่มเติม</option>
+				</select>
                 <div class="input-box">
                     <input type="password" required>
                     <label>Password</label>
@@ -27,7 +30,7 @@
                 </div>
                 <button type="submit" class="btn">Login</button>
                 <div class="signup-link">
-                    <a href="#">Signup</a>
+                    <a href="https://wisanusenhom.github.io/request/">Signup</a>
                 </div>
             </form>
         </div>
