@@ -1,99 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <title>รพ.สต.หนองทุ่ม อ.เซกา จ.บึงกาฬ</title>
-    <link rel="stylesheet" href="style.css">
-</head>
 
-<body>
-    <div class="container">
-        <div class="login-box">
-            <h2>ลงเวลาปฏิบัติราชการ</h2>
-            <form id="feedbackForm" class="text-center">
-                <div class="input-box">
-                    <input type="text" id ="typea" placeholder="รายละเอียด" >
-                    <label>Note</label>
-                </div>
-                    <!-- div class="input-box" -->
-                    <!-- input type="password" required-->
-                    <!--label>Password</label-->
-                <!--/div-->
-                <!--div class="forgot-pass"-->
-                    <!--a href="#">Forgot your password?</a-->
-                <!--/div-->
-                <!--button type="submit" class="btn">Login</button-->
-                <div id="cin" class="invisible"><button id="cin" type="button" class="btn btn-success btn-lg btn-block" onclick="getLocation()">Check-In</button></div>
-                <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger btn-lg btn-block" onclick="getLocationOut()">Check-Out</button></div>
-                <div class="signup-link">
-                    <a href="#">Signup</a>
-                </div>
-            </form>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>โรงพยาบาลส่งเสริมสุขภาพตำบลหนองทุ่ม อำเภอเซกา จังหวัดบึงกาฬ</title>
+  </head>
+	<body>
+<div class="container">
+      <div class="row">
+        <div class="col-12 col-md-8 mx-auto">
+          <div class="jumbotron">
+            <div class="row text-center">
+              <div class="text-center col-12">
+                <h3>ระบบลงเวลาการปฏิบัติงาน</h3>
+		<iframe src="https://free.timeanddate.com/clock/i8ypwfa0/n1049/szw80/szh80/hoc000/hbw0/hfc09f/cf100/hnc07c/hwc000/fiv0/facfff/fnu2/fdi76/mqcfff/mqs4/mql18/mqw4/mqd60/mhcfff/mhs4/mhl5/mhw4/mhd62/mmv0/hhcfff/hhs1/hhb10/hmcfff/hms1/hmb10/hscfff/hsw3" frameborder="0" width="80" height="80"></iframe>
+		<br>
+		 <iframe src="https://free.timeanddate.com/clock/i7vbkm53/n2469/tlth39/fn7/fs13/tct/pct/tt0/th1" frameborder="0" width="251" height="20" allowtransparency="true"></iframe>
+              </div>
+              <div class="text-center col-12">
+                <!-- CONTACT FORM https://github.com/jonmbake/bootstrap3-contact-form -->
+                <form id="feedbackForm" class="text-center">
+                  <div class="form-group">
+                    <label for="name">..:: ประเภทการลงเวลาปฏิบัติราชการ ::..</label>
+				  <select class="form-control" id="typea">
+  					<option value="">ปกติ</option>
+  					<option value="ไปราชการ">ไปราชการ</option>
+  					<option value="ไปช่วยราชการ">ไปช่วยราชการ</option>
+  					<option value="มาช่วยราชการ">มาช่วยราชการ</option>
+    				<option value="อื่นๆ">อื่นๆ โปรดระบุเพิ่มเติม</option>
+				</select>
+                  </div>
+                  <div class="form-group">
+                    <textarea rows="3" cols="100" class="form-control" id="nte" name="nte" placeholder="บันทึกรายละเอียดเพิ่มเติม" required="" warp="soft"></textarea>
+                 	
+			</div>
+<div id="cin" class="invisible"><button id="cin" type="button" class="btn btn-success btn-lg btn-block" onclick="getLocation()">Check-In</button></div>
+<div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger btn-lg btn-block" onclick="getLocationOut()">Check-Out</button></div>
+                </form>
+
+			<p id="demo"></p>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <span style="--i:0;"></span>
-        <span style="--i:1;"></span>
-        <span style="--i:2;"></span>
-        <span style="--i:3;"></span>
-        <span style="--i:4;"></span>
-        <span style="--i:5;"></span>
-        <span style="--i:6;"></span>
-        <span style="--i:7;"></span>
-        <span style="--i:8;"></span>
-        <span style="--i:9;"></span>
-        <span style="--i:10;"></span>
-        <span style="--i:11;"></span>
-        <span style="--i:12;"></span>
-        <span style="--i:13;"></span>
-        <span style="--i:14;"></span>
-        <span style="--i:15;"></span>
-        <span style="--i:16;"></span>
-        <span style="--i:17;"></span>
-        <span style="--i:18;"></span>
-        <span style="--i:19;"></span>
-        <span style="--i:20;"></span>
-        <span style="--i:21;"></span>
-        <span style="--i:22;"></span>
-        <span style="--i:23;"></span>
-        <span style="--i:24;"></span>
-        <span style="--i:25;"></span>
-        <span style="--i:26;"></span>
-        <span style="--i:27;"></span>
-        <span style="--i:28;"></span>
-        <span style="--i:29;"></span>
-        <span style="--i:30;"></span>
-        <span style="--i:31;"></span>
-        <span style="--i:32;"></span>
-        <span style="--i:33;"></span>
-        <span style="--i:34;"></span>
-        <span style="--i:35;"></span>
-        <span style="--i:36;"></span>
-        <span style="--i:37;"></span>
-        <span style="--i:38;"></span>
-        <span style="--i:39;"></span>
-        <span style="--i:40;"></span>
-        <span style="--i:41;"></span>
-        <span style="--i:42;"></span>
-        <span style="--i:43;"></span>
-        <span style="--i:44;"></span>
-        <span style="--i:45;"></span>
-        <span style="--i:46;"></span>
-        <span style="--i:47;"></span>
-        <span style="--i:48;"></span>
-        <span style="--i:49;"></span>
-        <p id="demo" class="forgot-pass"></p>   
+      </div>
     </div>
- <script>
+    <footer class="text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>Powered By &#9882; Nongtum Healthy Hospital 2021</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+<script>
 window.onload = function() {
   initializeLiff('1654797991-wWYODmOq');
 }
 
 const xurl = "https://script.google.com/macros/s/AKfycbwW8SW0oHJb4XqgStEb3A0oYo26dRDCaZX7iuMbmG4gpCaoOC7HPrx0N8Vi2OcIB7Vw/exec";
-
 
 function checks(){
 
@@ -103,7 +75,7 @@ today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
 var hh = today.getHours();
 var mm = today.getMinutes(); 
 
-        if(hh <= 15){
+        if(hh <= 10){
           document.getElementById("cin").classList.remove('invisible');
         }else if(hh >= 16){
           document.getElementById("cout").classList.remove('invisible');
@@ -112,6 +84,7 @@ alert("ไม่สามารถเช็คอิน/เอาท์ได้
 liff.closeWindow();  
             }
 }
+
 
 function initializeLiff(myLiffId) {
     liff
@@ -162,7 +135,9 @@ var xmlhttp = new XMLHttpRequest();
 }
 
 
+
 ///////////////////////////////
+
 
 function getLocationOut() {
   if (navigator.geolocation) {
@@ -197,13 +172,18 @@ var xmlhttp = new XMLHttpRequest();
         liff.closeWindow();
       }});  
 }
+
+
+
 </script>
 
-<!-- Optional JavaScript -->
+
+
+    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-</body>
+  </body>
 </html>
