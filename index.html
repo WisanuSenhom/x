@@ -8,79 +8,38 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>โรงพยาบาลส่งเสริมสุขภาพตำบลหนองทุ่ม อำเภอเซกา จังหวัดบึงกาฬ</title>
+    <title>ITDEV.win</title>
   </head>
-	<body>
-<div class="container">
-      <div class="row">
-        <div class="col-12 col-md-8 mx-auto">
-          <div class="jumbotron">
-            <div class="row text-center">
-              <div class="text-center col-12">
-                <h3>ระบบลงเวลาการปฏิบัติงาน</h3>
-		<iframe src="https://free.timeanddate.com/clock/i8ypwfa0/n1049/szw80/szh80/hoc000/hbw0/hfc09f/cf100/hnc07c/hwc000/fiv0/facfff/fnu2/fdi76/mqcfff/mqs4/mql18/mqw4/mqd60/mhcfff/mhs4/mhl5/mhw4/mhd62/mmv0/hhcfff/hhs1/hhb10/hmcfff/hms1/hmb10/hscfff/hsw3" frameborder="0" width="80" height="80"></iframe>
-		<br>
-		 <iframe src="https://free.timeanddate.com/clock/i7vbkm53/n2469/tlth39/fn7/fs13/tct/pct/tt0/th1" frameborder="0" width="251" height="20" allowtransparency="true"></iframe>
-              </div>
-              <div class="text-center col-12">
-                <!-- CONTACT FORM https://github.com/jonmbake/bootstrap3-contact-form -->
-                <form id="feedbackForm" class="text-center">
-                  <div class="form-group">
-                    <label for="name">..:: ประเภทการลงเวลาปฏิบัติราชการ ::..</label>
-				  <select class="form-control" id="typea">
-  					<option value="">ปกติ</option>
-  					<option value="ไปราชการ">ไปราชการ</option>
-  					<option value="ไปช่วยราชการ">ไปช่วยราชการ</option>
-  					<option value="มาช่วยราชการ">มาช่วยราชการ</option>
-    				<option value="อื่นๆ">อื่นๆ โปรดระบุเพิ่มเติม</option>
-				</select>
-                  </div>
-                  <div class="form-group">
-                    <textarea rows="3" cols="100" class="form-control" id="nte" name="nte" placeholder="บันทึกรายละเอียดเพิ่มเติม" required="" warp="soft"></textarea>
-                 	
-			</div>
-<div id="cin" class="invisible"><button id="cin" type="button" class="btn btn-success btn-lg btn-block" onclick="getLocation()">Check-In</button></div>
-<div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger btn-lg btn-block" onclick="getLocationOut()">Check-Out</button></div>
-                </form>
+  <body>
+    <center>
+    <h1>Check-In/Out Log</h1>
+<p>Click the button to check-in or check-out with your coordinates.</p>
+<div id="cin" class="invisible"><button type="button" class="btn btn-success" onclick="getLocation()">Check-In</button></div>
+<div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger" onclick="getLocationOut()">Check-Out</button></div>
 
-			<p id="demo"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer class="text-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <p>Powered By &#9882; Nongtum Healthy Hospital 2021</p>
-          </div>
-        </div>
-      </div>
-    </footer>
+<p id="demo"></p>
+</center>
 
 <script>
 window.onload = function() {
-  initializeLiff('1654797991-wWYODmOq');
+  initializeLiff('1654370606-geWqlVLk');
 }
 
-const xurl = "https://script.google.com/macros/s/AKfycbwW8SW0oHJb4XqgStEb3A0oYo26dRDCaZX7iuMbmG4gpCaoOC7HPrx0N8Vi2OcIB7Vw/exec";
+const xurl = "https://script.google.com/macros/s/AKfycbz-krIX4x26C_hIFECOy5i0EvLPIMIeKiSPD4kswFJXznuGFE4/exec";
 
 function checks(){
 
 var today = new Date();
 today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
-//document.getElementById("timer").innerHTML = today; // <p id="timer"></p>
 var hh = today.getHours();
 var mm = today.getMinutes(); 
 
-        if(hh <= 16){
+        if(hh <= 13){
           document.getElementById("cin").classList.remove('invisible');
-        }else if(hh >= 16){
+        }else if(hh >= 17){
           document.getElementById("cout").classList.remove('invisible');
             }else{
-alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 10.00-16.00 ขณะนี้เวลา "+hh+":"+mm+" น.");
+alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-17.00 "+hh+":"+mm);
 liff.closeWindow();  
             }
 }
@@ -109,9 +68,7 @@ function getLocation() {
 }
 
 function showPosition(position) {
-var sel = document.getElementById("typea").value;
 
-var ntex = document.getElementById("nte").value;
      liff.getProfile().then(function(profile) {
             var uid = profile.userId;
             var uname = profile.displayName;
@@ -122,7 +79,7 @@ var ntex = document.getElementById("nte").value;
   "<br>displayName: " + uname+
   "<br>your OS: " + xos;
 var xmlhttp = new XMLHttpRequest();
-        var theUrl = xurl+"?ctype=In&sel="+sel+"&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        var theUrl = xurl+"?ctype=In&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
             xmlhttp.onreadystatechange = function() {
@@ -148,9 +105,7 @@ function getLocationOut() {
 }
 
 function showPositionOut(position) {
-var sel = document.getElementById("typea").value;
 
-var ntex = document.getElementById("nte").value;
      liff.getProfile().then(function(profile) {
             var uid = profile.userId;
             var uname = profile.displayName;
@@ -161,7 +116,7 @@ var ntex = document.getElementById("nte").value;
   "<br>displayName: " + uname+
   "<br>your OS: " + xos;
 var xmlhttp = new XMLHttpRequest();
-        var theUrl = xurl+"?ctype=Out&sel="+sel+"&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        var theUrl = xurl+"?ctype=Out&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
             xmlhttp.onreadystatechange = function() {
