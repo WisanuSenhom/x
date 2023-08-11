@@ -87,9 +87,15 @@
     </center>
 
 <script>
-window.onload = function() {
-  initializeLiff('1654797991-nolGabGZ');
-}
+window.onload = async function main() {
+     await liff.init({ liffId: "1654797991-nolGabGZ" })
+       if (liff.isLoggedIn()) {
+         getUserProfile()
+       } else {
+         liff.login()
+       }
+   }
+  
 
 const xurl = "https://script.google.com/macros/s/AKfycbwvmwsd9gskNuoRtLLT64BLePbSZyMdkOLK4ihZY_0HBVk-Pqx5S2oyHe0mFI9KFgml/exec";
 
