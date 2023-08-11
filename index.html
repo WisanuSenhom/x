@@ -106,9 +106,9 @@ today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
 var hh = today.getHours();
 var mm = today.getMinutes(); 
 
-   if(hh <= 15){
+   if(hh <= 17){
           document.getElementById("cin").classList.remove('invisible');
-        }else if(hh >= 16){
+        }else if(hh >= 18){
           document.getElementById("cout").classList.remove('invisible');
             }else{
 alert("ไม่สามารถเช็คอิน/เอาท์ได้ในช่วงเวลา 13.00-17.00 "+hh+":"+mm);
