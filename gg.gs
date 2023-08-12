@@ -34,7 +34,7 @@ function distance(lat1, lon1, lat2, lon2, unit) {
     }
 
 function doGet(e) {
-  var ss = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1LHSC3UdHVUnoifWqJBNmu44j6OJeX71iWSpyq1x79a4/edit");
+  var ss = SpreadsheetApp.openByUrl("xxx");
   var sheet = ss.getSheetByName("checkin");
   var lat = e.parameter.lat;
   var long = e.parameter.long;
@@ -79,7 +79,7 @@ f= response1.results[0].formatted_address;
   }
 
 // ตรวจสอบการเป็นสมาชิก
-  var url = 'https://docs.google.com/spreadsheets/d/1LHSC3UdHVUnoifWqJBNmu44j6OJeX71iWSpyq1x79a4/edit';
+  var url = 'xx';
   var sss = SpreadsheetApp.openByUrl(url);
   var webAppSheet = sss.getSheetByName("member");
   var getLastRow =  webAppSheet.getLastRow();
