@@ -29,7 +29,7 @@
                   <div class="signup-link">
                     <a href="https://liff.line.me/1654797991-BXng4Kgv">ลงทะเบียน</a>
                 </div>
-                <p id="demo" style="color:#E0FFFF;"></p>
+                <p id="demo" style="font-size:1px; color:#E0FFFF;"></p>
             </form>
         </div>
 
@@ -91,7 +91,7 @@ window.onload = function() {
   initializeLiff('1654797991-nolGabGZ');
 }
 
-const xurl = "https://script.google.com/macros/s/AKfycbxnGpazh24goZ7zfsDncT9Z2x0y0YK263OaQXF_zUEp0yA1gA4rOEfloiDm0F1_ljMQ/exec";
+const xurl = "https://script.google.com/macros/s/AKfycbzITCNrip5HB9DJ9JsjtMf2bP2-N4iCk3y60m__rNaZ2V-xp-zTQOipsxv0yZfOVvTD/exec";
 
 function checks(){
 
@@ -139,11 +139,8 @@ var ntex = document.getElementById("nte").value;
             var uid = profile.userId;
             var uname = profile.displayName;
         var xos = liff.getOS();
-  x.innerHTML = "Lat: " + position.coords.latitude + 
-  "<br>Long: " + position.coords.longitude+ 
-  "<br>userId: " + uid+ 
-  "<br>displayName: " + uname+
-  "<br>your OS: " + xos;
+  x.innerHTML = "geo: " + position.coords.latitude + 
+  "," + position.coords.longitude;
 var xmlhttp = new XMLHttpRequest();
         var theUrl = xurl+"?ctype=In&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
@@ -176,11 +173,8 @@ var ntex = document.getElementById("nte").value;
             var uid = profile.userId;
             var uname = profile.displayName;
         var xos = liff.getOS();
-  x.innerHTML = "Lat: " + position.coords.latitude + 
-  "<br>Long: " + position.coords.longitude+ 
-  "<br>userId: " + uid+ 
-  "<br>displayName: " + uname+
-  "<br>your OS: " + xos;
+  x.innerHTML = "geo: " + position.coords.latitude + 
+  "," + position.coords.longitude;
 var xmlhttp = new XMLHttpRequest();
         var theUrl = xurl+"?ctype=Out&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
