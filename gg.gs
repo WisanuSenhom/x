@@ -1,4 +1,4 @@
-var channelToken = "INLyfV5vdpNpW6qpk7/bTBcJ+9zRuIcpxFmgkLSy+2fzUeNEf729NY+UY2yC3Rdoma2Nc/bvbdI4okh9vPWFmXWJk+pZHA7cL0JnzoG7jHVc5fQVixLB0JoQI8h8pzLdF9APKrmNdF+xlG/HQULfnAdB04t89/1O/w1cDnyilFU=";
+var channelToken = "xxFU=";
 
 function replyMsg(replyToken, mess, channelToken) {
   var url = 'https://api.line.me/v2/bot/message/reply';
@@ -46,26 +46,26 @@ function doGet(e) {
   var ntea = e.parameter.ntex;
 
   //var checkwithuid = e.parameter.checkwithuid;
-  var latx = "17.8916205";
+   var latx = "17.8916205";
   var longx = "103.8742401";
   var todaydate = Utilities.formatDate(new Date(), "GMT+7", "dd-MM-yyyy");
   var todaytime = Utilities.formatDate(new Date(), "GMT+7", "HH:mm:ss");
   
   // แปลงค่าพิกัด เป็นข้อความสถานที่
-  var response1 = Maps.newGeocoder().reverseGeocode(e.parameter.lat, e.parameter.long);
+  var response1 = Maps.newGeocoder().reverseGeocode(lat,long);
 f= response1.results[0].formatted_address;
   // แปลภาษาอังกฤษ เป็นไทย
  var ft = LanguageApp.translate(f, 'en', 'th');
- // ตรวจสอบ
- var cck = (ctype+todaydate+username);
+ // กำหนดรหัสตรวจสอบ
+ var cck = (ctype+todaydate+user);
+ var cckv = (todaydate+user);
   
   var xdist = distance(latx, longx, lat, long, "K");
  // var typex = e.parameter.sel;
  // var vday = e.parameter.vday;
 //  var vday2 = e.parameter.vday2;
  // var sels = e.parameter.sels;
- 
-  
+   
   if(xdist > 2000){ //ปรับระยะห่างที่กำหนด
     var result = {"desc": "คุณอยู่ห่าง "+xdist.toFixed(0)+" กม. ซึ่งเกินที่กำหนด 2000 กม."};
   }else{ 
@@ -75,13 +75,15 @@ f= response1.results[0].formatted_address;
   if(xdist < 1){
   var xdist = xdist*1000;
   var xdist = xdist.toFixed(0)
+  if (xdist < 100){var xdist = 0; // ระยะน้อยกว่า 100 เมตร เท่ากับ 0
+  var xdist = xdist.toFixed(0)}
   var xunit = "ม."; //เมตร
   }
 
+ // Logger.log(xdist);
+
 // ตรวจสอบการเป็นสมาชิก
-  var url = 'xx';
-  var sss = SpreadsheetApp.openByUrl(url);
-  var webAppSheet = sss.getSheetByName("member");
+  var webAppSheet = ss.getSheetByName("request"); //member
   var getLastRow =  webAppSheet.getLastRow();
   //var username = 'U46c24622beca6cb3c352b202fadeecd0';
   var found_record = '';
@@ -95,26 +97,38 @@ f= response1.results[0].formatted_address;
   if(found_record == '')
   {
     found_record = 'FALSE'; 
-  }
+  };
 
+      var lastrow = sheet.getLastRow();
+      var fristrow = (lastrow-20);
+      var data_record = ''
+      for(var r = 1 ; r <= lastrow; r++)
+      {
+      if(sheet.getRange(r, 1).getDisplayValue() == cck)
+      {
+      data_record = 'TRUE';
+      }    
+      }
+      if(data_record == '')
+      {
+      data_record = 'FALSE'; 
+      };
+      // Logger.log(r);
 
-// การตรวจสอบข
+// การตรวจสอบข้อมูล
    if(found_record == 'TRUE'){
-                    
-
-
-    var result = {"desc": "คุณ "+name+" \nบันทึกการ Check-"+ctype+" สำเร็จ เวลา "+todaytime+" น.\n"+ft};
-   sheet.appendRow([user, name, geo, xdist+' '+xunit, xos, todaydate, todaytime, ctype, ft, ntea, cck]);
-    }else{
-    var result = {"desc": "บันทึกลงเวลาไม่สำเร็จ\nยังไม่มีไลน์ คุณ "+name+" ในระบบ\nกรุณาลงทะเบียน"};}
+          if(data_record == 'FALSE'){
+          var result = {"desc": "คุณ "+name+" \nบันทึกการ Check-"+ctype+" สำเร็จ\nเวลา "+todaytime+" น.\n"+ft+"\nระยะ "+xdist+" "+xunit};
+          sheet.appendRow([cck,cckv,user, name, geo, xdist+' '+xunit, xos, todaydate, todaytime, ctype, ft, ntea,new Date()]);
+          }else{
+          result = {"desc": "คุณ "+name+" \nบันทึกการ Check-"+ctype+" ในวันนี้แล้ว"};}
+      }else{
+      var result = {"desc": "บันทึกลงเวลาไม่สำเร็จ\nยังไม่มีไลน์ คุณ "+name+" ในระบบ\nกรุณาลงทะเบียน"};}
     }
-
-   //var result = {"desc": "คุณ "+name+" บันทึกการ Check-"+ctype+" สำเร็จ เวลา "+todaytime+" น."};
- //  sheet.appendRow([user, name, geo, xdist+' '+xunit, xos, todaydate, todaytime, ctype, ft, typex, vday, vday2, sels, ntea]);
-  //} 
-  
-  return ContentService.createTextOutput(JSON.stringify(result) ).setMimeType(ContentService.MimeType.JSON); 
+Logger.log(result)
+     return ContentService.createTextOutput(JSON.stringify(result) ).setMimeType(ContentService.MimeType.JSON); 
   }
+
 
 
 
@@ -132,7 +146,7 @@ function doPost(e) {
  
         switch (type) {
           case 'follow':
-            var mess = [{"type":"text","text":"https://liff.line.me/1654797991-nolGabGZ"}];
+            var mess = [{"type":"text","text":"https://liff.line.me/xxx"}];
             replyMsg(replyToken, mess, channelToken);
             break;
           case 'message':
@@ -143,11 +157,11 @@ function doPost(e) {
             
             
             if(messageType == "text"){
-            var mess = [{"type":"text","text":"https://liff.line.me/1654797991-nolGabGZ"}];
+            var mess = [{"type":"text","text":"https://liff.line.me/xxx"}];
             replyMsg(replyToken, mess, channelToken);
             }
             else{
-            var mess = [{"type":"text","text":"https://liff.line.me/1654797991-nolGabGZ"}];
+            var mess = [{"type":"text","text":"https://liff.line.me/xxx"}];
             replyMsg(replyToken, mess, channelToken);
             }
             break;
