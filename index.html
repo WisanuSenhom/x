@@ -144,6 +144,7 @@ function getLocation() {
 }
 
 function showPosition(position) {
+var sel = document.getElementById("typea").value;
 var ntex = document.getElementById("nte").value;
      liff.getProfile().then(function(profile) {
             var uid = profile.userId;
@@ -178,6 +179,7 @@ function getLocationOut() {
 }
 
 function showPositionOut(position) {
+var sel = document.getElementById("typea").value;
 var ntex = document.getElementById("nte").value;
      liff.getProfile().then(function(profile) {
             var uid = profile.userId;
