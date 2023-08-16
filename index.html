@@ -101,12 +101,12 @@ today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
 var hh = today.getHours();
 var mm = today.getMinutes(); 
 
-   if(hh <= 10){
+   if(hh <= 12){
           document.getElementById("cin").classList.remove('invisible');
-        }else if(hh >= 16){
+        }else if(hh >= 13){
           document.getElementById("cout").classList.remove('invisible');
             }else{
-alert("ไม่สามารถลงเวลามาทำงาน/เวลากลับ ได้ในช่วงเวลา 10.00-16.00 "+hh+":"+mm);
+alert("ไม่สามารถลงเวลามาทำงาน/เวลากลับ ได้ในช่วงเวลา 12.00-13.00 "+hh+":"+mm);
 liff.closeWindow();  
             }
 }
