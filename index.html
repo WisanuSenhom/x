@@ -18,6 +18,13 @@
            <p style="font-size:6px; color:#E0FFFF;">สำหรับทดลองการใช้งาน(เปิดตำแหน่งและให้การอนุญาต)</p>
             <iframe src="https://free.timeanddate.com/clock/i8z1mdj5/n3376/tlth39/fn14/fs20/fc0ef/tct/pct/ftb/th1" frameborder="0" width="93" height="26" allowtransparency="true"></iframe>
             <form>
+               <select  id="typea" class="selectpicker" data-style="btn-primary">
+  					<option value="">ปกติ</option>
+  					<option value="ไปราชการ">ไปราชการ</option>
+  					<option value="ไปช่วยราชการ">ไปช่วยราชการ</option>
+  					<option value="มาช่วยราชการ">มาช่วยราชการ</option>
+    				<option value="อื่นๆ">อื่นๆ โปรดระบุเพิ่มเติม</option>
+				      </select>
                 <div class="input-box">
                     <input  id="nte" name="nte" type="text" placeholder="รายละเอียด">
                     <label>บันทึก</label>
@@ -92,7 +99,7 @@ window.onload = function() {
   initializeLiff('1654797991-nolGabGZ');
 }
 
-const xurl = "https://script.google.com/macros/s/AKfycbzITCNrip5HB9DJ9JsjtMf2bP2-N4iCk3y60m__rNaZ2V-xp-zTQOipsxv0yZfOVvTD/exec";
+const xurl = "https://script.google.com/macros/s/AKfycbxLprum8RAqLQQJcha3qYw7tcUiT4OL4t2dMiPVT0uMHPJnFg6KwWrHfceJNgbSP5BX/exec";
 
 function checks(){
 
@@ -143,7 +150,7 @@ var ntex = document.getElementById("nte").value;
   x.innerHTML = "พิกัด: " + position.coords.latitude + 
   "," + position.coords.longitude;
 var xmlhttp = new XMLHttpRequest();
-        var theUrl = xurl+"?ctype=In&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        var theUrl = xurl+"?ctype=In&sel="+sel+"&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
             xmlhttp.onreadystatechange = function() {
@@ -177,7 +184,7 @@ var ntex = document.getElementById("nte").value;
   x.innerHTML = "พิกัด: " + position.coords.latitude + 
   "," + position.coords.longitude;
 var xmlhttp = new XMLHttpRequest();
-        var theUrl = xurl+"?ctype=Out&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        var theUrl = xurl+"?ctype=Out&sel="+sel+"&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
             xmlhttp.onreadystatechange = function() {
