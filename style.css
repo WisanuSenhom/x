@@ -136,16 +136,41 @@ h2 {
 }
 
 .btn2 {
-    width: 100%;
+   width: 100%;
     height: 35px;
-    background: #1f293a;
+    background: transparent;
     border: 2px solid #2c4766;
     outline: none;
-    border-radius: 30px;
-    cursor: pointer;
+    border-radius: 25px;
     font-size: .8em;
     color: #fff;
-    font-weight: 600;
+    padding: 0 20px;
+    transition: .5s ease;
+}
+
+.btn2 input:focus,
+.btn2 input:valid {
+    border-color: #0ef;
+}
+
+.btn2 label {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    font-size: .8em;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s ease;
+}
+
+.btn2 input:focus~label,
+.btn2 input:valid~label {
+    top: 1px;
+    font-size: .8em;
+    background: #1f293a;
+    padding: 0 6px;
+    color: #0ef;
 }
 
 .signup-link {
