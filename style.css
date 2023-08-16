@@ -146,6 +146,7 @@ h2 {
     color: #ffff;
     padding: 0 20px;
     text-align-last: center;
+    font-weight: 600;
     transition: .5s ease;
 }
 
