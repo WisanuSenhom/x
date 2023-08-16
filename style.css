@@ -71,11 +71,11 @@ h2 {
 
 .input-box input {
     width: 100%;
-    height: 50px;
+    height: 35px;
     background: transparent;
     border: 2px solid #2c4766;
     outline: none;
-    border-radius: 40px;
+    border-radius: 25px;
     font-size: .8em;
     color: #fff;
     padding: 0 20px;
@@ -124,11 +124,11 @@ h2 {
 
 .btn {
     width: 100%;
-    height: 40px;
-    # background: #0ef;
+    height: 35px;
+    
     border: none;
     outline: none;
-    border-radius: 35px;
+    border-radius: 30px;
     cursor: pointer;
     font-size: 1em;
     color: #1f293a;
@@ -137,13 +137,13 @@ h2 {
 
 .btn2 {
     width: 100%;
-    height: 40px;
-    # background: #0ef;
+    height: 35px;
+    background: #0ef;
     border: none;
     outline: none;
-    border-radius: 35px;
+    border-radius: 30px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: .8em;
     color: #1f293a;
     font-weight: 600;
 }
