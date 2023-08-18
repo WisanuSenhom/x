@@ -111,9 +111,9 @@ today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
 var hh = today.getHours();
 var mm = today.getMinutes(); 
 
-   if(hh <= 12){
+   if(hh <= 15){
           document.getElementById("cin").classList.remove('invisible');
-        }else if(hh >= 13){
+        }else if(hh >= 16){
           document.getElementById("cout").classList.remove('invisible');
             }else{
 alert("ไม่สามารถลงเวลามาทำงาน/เวลากลับ ได้ในช่วงเวลา 12.00-13.00 "+hh+":"+mm);
