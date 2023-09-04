@@ -112,9 +112,9 @@ today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
 var hh = today.getHours();
 var mm = today.getMinutes(); 
 
-        if(hh <= 8 && mm <=30 ){
+        if(hh <= 9){
           document.getElementById("cin").classList.remove('invisible');
-        }else if(hh >= 16 && mm >=20 ){
+        }else if(hh >= 16){
           document.getElementById("cout").classList.remove('invisible');
             }else{
         document.getElementById("creq").classList.remove('invisible');
