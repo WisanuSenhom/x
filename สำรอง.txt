@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+     <link rel="stylesheet" href="style.css">
+    <title>ทดลองระบบลงเวลาปฏิบัติงาน</title>
+  </head>
+  <body>
+    <center>
+ <div class="container">
+        <div class="login-box">
+            <h2>ลงเวลาปฏิบัติงาน</h2>
+           <p style="font-size:6px; color:#E0FFFF;">สำหรับทดลองการใช้งาน(ปรับปรุง 31/8/66)</p>
+            <iframe src="https://free.timeanddate.com/clock/i8z1mdj5/n3376/tlth39/fn14/fs20/fc0ef/tct/pct/ftb/th1" frameborder="0" width="93" height="26" allowtransparency="true"></iframe>
+            <form>
+		<select  id="typea" class="btn2" >
+  			<option value="">ปฏิบัติงานตามปกติ</option>
+            		<option value="ปฏิบัติงานนอกสถานที่">ปฏิบัติงานนอกสถานที่</option>
+  			<option value="ปฏิบัติงานในวันหยุดเสาร์ อาทิตย์ และหยุดราชการ">ปฏิบัติงานในวันหยุดเสาร์ อาทิตย์ และหยุดราชการ</option>
+			<option value="ไปราชการ">ไปราชการ</option>
+			<option value="เข้ารับการฝึกอบรม">เข้ารับการฝึกอบรม</option>
+  			<option value="ไปช่วยราชการ">ไปช่วยราชการ</option>
+  			<option value="มาช่วยราชการ">มาช่วยราชการ</option>
+           		 <option value="อื่นๆ">อื่นๆ โปรดระบุเพิ่มเติม</option>
+		</select> 
+		    <div class="input-box">
+                    <input  id="nte" name="nte" type="text" placeholder="รายละเอียด" autofocus>
+                    <label>บันทึกเพิ่มเติม</label>
+                </div>
+              <div class="forgot-pass">
+                    <a href="https://liff.line.me/1654797991-3mwO60Od">ลืมลงเวลา?</a>
+                </div>
+              <div id="cin" class="invisible"><button type="button" class="btn btn-success" onclick="getLocation()">ลงเวลามา</button></div>
+              <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger" onclick="getLocationOut()">ลงเวลากลับ</button></div>
+                  <div class="signup-link">
+                    <a href="https://liff.line.me/1654797991-BXng4Kgv">ลงทะเบียน</a>
+                </div>
+                <p id="demo" style="font-size:1px; color:#E0FFFF;"></p>
+            </form>
+        </div>
+
+        <span style="--i:0;"></span>
+        <span style="--i:1;"></span>
+        <span style="--i:2;"></span>
+        <span style="--i:3;"></span>
+        <span style="--i:4;"></span>
+        <span style="--i:5;"></span>
+        <span style="--i:6;"></span>
+        <span style="--i:7;"></span>
+        <span style="--i:8;"></span>
+        <span style="--i:9;"></span>
+        <span style="--i:10;"></span>
+        <span style="--i:11;"></span>
+        <span style="--i:12;"></span>
+        <span style="--i:13;"></span>
+        <span style="--i:14;"></span>
+        <span style="--i:15;"></span>
+        <span style="--i:16;"></span>
+        <span style="--i:17;"></span>
+        <span style="--i:18;"></span>
+        <span style="--i:19;"></span>
+        <span style="--i:20;"></span>
+        <span style="--i:21;"></span>
+        <span style="--i:22;"></span>
+        <span style="--i:23;"></span>
+        <span style="--i:24;"></span>
+        <span style="--i:25;"></span>
+        <span style="--i:26;"></span>
+        <span style="--i:27;"></span>
+        <span style="--i:28;"></span>
+        <span style="--i:29;"></span>
+        <span style="--i:30;"></span>
+        <span style="--i:31;"></span>
+        <span style="--i:32;"></span>
+        <span style="--i:33;"></span>
+        <span style="--i:34;"></span>
+        <span style="--i:35;"></span>
+        <span style="--i:36;"></span>
+        <span style="--i:37;"></span>
+        <span style="--i:38;"></span>
+        <span style="--i:39;"></span>
+        <span style="--i:40;"></span>
+        <span style="--i:41;"></span>
+        <span style="--i:42;"></span>
+        <span style="--i:43;"></span>
+        <span style="--i:44;"></span>
+        <span style="--i:45;"></span>
+        <span style="--i:46;"></span>
+        <span style="--i:47;"></span>
+        <span style="--i:48;"></span>
+        <span style="--i:49;"></span>
+    </div>
+       </center>
+
+<script>
+window.onload = function() {
+  initializeLiff('1654797991-nolGabGZ');
+}
+
+const xurl = "https://script.google.com/macros/s/AKfycbyrP9DrlMotCpBcgK2JIRvU74JvtVTsihw6AZxnbyR7PcUhs-LdYbve0GZclqQmeYbL/exec";
+
+function checks(){
+
+var today = new Date();
+today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
+var hh = today.getHours();
+var mm = today.getMinutes(); 
+
+   if(hh <= 15){
+          document.getElementById("cin").classList.remove('invisible');
+        }else if(hh >= 16){
+          document.getElementById("cout").classList.remove('invisible');
+            }else{
+alert("ไม่สามารถลงเวลามาทำงาน/เวลากลับ ได้ในช่วงเวลา 12.00-13.00 "+hh+":"+mm);
+liff.closeWindow();  
+            }
+}
+
+
+function initializeLiff(myLiffId) {
+    liff
+        .init({
+            liffId: myLiffId
+        })
+        .then(() => {
+            checks();
+        })
+        .catch((err) => {
+        });
+}
+
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+var sel = document.getElementById("typea").value;
+var ntex = document.getElementById("nte").value;
+     liff.getProfile().then(function(profile) {
+            var uid = profile.userId;
+            var uname = profile.displayName;
+        var xos = liff.getOS();
+  x.innerHTML = "พิกัด: " + position.coords.latitude + 
+  "," + position.coords.longitude;
+var xmlhttp = new XMLHttpRequest();
+        var theUrl = xurl+"?ctype=In&sel="+sel+"&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        xmlhttp.open('GET', theUrl);
+        xmlhttp.send();
+            xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var jsonResponse = JSON.parse(this.responseText);
+        }
+        alert(jsonResponse.desc);
+        liff.closeWindow();
+      }});  
+}
+
+
+
+///////////////////////////////
+
+
+function getLocationOut() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPositionOut);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPositionOut(position) {
+var sel = document.getElementById("typea").value;
+var ntex = document.getElementById("nte").value;
+     liff.getProfile().then(function(profile) {
+            var uid = profile.userId;
+            var uname = profile.displayName;
+        var xos = liff.getOS();
+  x.innerHTML = "พิกัด: " + position.coords.latitude + 
+  "," + position.coords.longitude;
+var xmlhttp = new XMLHttpRequest();
+        var theUrl = xurl+"?ctype=Out&sel="+sel+"&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        xmlhttp.open('GET', theUrl);
+        xmlhttp.send();
+            xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var jsonResponse = JSON.parse(this.responseText);
+        }
+        alert(jsonResponse.desc);
+        liff.closeWindow();
+      }});  
+}
+
+
+
+</script>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>
