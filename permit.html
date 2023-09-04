@@ -8,14 +8,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>ทดลองระบบลงเวลาปฏิบัติงาน</title>
+    <title>ระบบบันทึกชี้แจงการลงเวลาปฏิบัติงาน</title>
   </head>
   <body>
     <center>
  <div class="container">
         <div class="login-box">
-            <h2>ชี้แจ้งการลงเวลาปฏิบัติงาน</h2>
-           <p style="font-size:14px; color:#E0FFFF;">ระบุ วันที่ เวลา มา ปฏิบัติงานจริง(ปรับโค๊ด เวลา 4)</p>
+            <h2>ชี้แจงการลงเวลาปฏิบัติงาน</h2>
+           <p style="font-size:14px; color:#E0FFFF;">ระบุ วันที่ เวลา มาปฏิบัติงานจริง</p>
             <form>             
         <input type="datetime-local" id="daytime" class="forgot-pass"  name="daytime" required="true">     
 		<select  id="typea" class="btn2" >
@@ -36,6 +36,7 @@
        
               <button id="cin" type="button" class="btn btn-primary" onclick="getLocation()">ลงเวลามา</button>
               <p></p>
+		
               <!--button id="cout" type="button" class="btn btn-danger" onclick="getLocationOut()">ลงเวลากลับ</button-->
                <p id="demo" style="font-size:6px; color:#E0FFFF;"></p>
             </form>
