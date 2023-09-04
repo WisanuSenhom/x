@@ -150,7 +150,7 @@ var ntex = document.getElementById("nte").value;
   x.innerHTML = "พิกัด: " + position.coords.latitude + 
   "," + position.coords.longitude;
 var xmlhttp = new XMLHttpRequest();
-        var theUrl = xurl+"?ctype=In&sel="+sel+"&dt="+dt+"&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        var theUrl = xurl+"?ctype=RegIn&sel="+sel+"&dt="+dt+"&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
             xmlhttp.onreadystatechange = function() {
@@ -186,7 +186,7 @@ var ntex = document.getElementById("nte").value;
   x.innerHTML = "พิกัด: " + position.coords.latitude + 
   "," + position.coords.longitude;
 var xmlhttp = new XMLHttpRequest();
-        var theUrl = xurl+"?ctype=Out&sel="+sel+"&dt="+dt+"&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        var theUrl = xurl+"?ctype=ReqOut&sel="+sel+"&dt="+dt+"&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
             xmlhttp.onreadystatechange = function() {
