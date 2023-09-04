@@ -99,7 +99,7 @@ window.onload = function() {
   initializeLiff('1654797991-nolGabGZ');
 }
 
-const xurl = "https://script.google.com/macros/s/AKfycbyrP9DrlMotCpBcgK2JIRvU74JvtVTsihw6AZxnbyR7PcUhs-LdYbve0GZclqQmeYbL/exec";
+const xurl = "https://script.google.com/macros/s/AKfycbyFp6n3v_7TrPrkRpQtbfRa3Z8ACFaW1RsbeEQTP61c4AF3-22Xkn-cPU1j7RqukFw/exec";
 
 function checks(){
 
