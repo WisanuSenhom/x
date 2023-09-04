@@ -140,10 +140,7 @@ function getLocation() {
 }
 
 function showPosition(position) {
-    var dt = document.getElementById("daytime").value;
-var dhh = dt.getHours();
-if(ddh < 5 || dhh > 9 ){alert("ไม่สามารถบันทึกเวลาเวลามาได้ โปรดตรวจสอบเวลามาอีกครั้ง");
-liff.closeWindow();}else{
+var dt = document.getElementById("daytime").value;
 var sel = document.getElementById("typea").value;
 var ntex = document.getElementById("nte").value;
      liff.getProfile().then(function(profile) {
@@ -164,7 +161,6 @@ var xmlhttp = new XMLHttpRequest();
         liff.closeWindow();
       }});  
 }
-}
 
 
 ///////////////////////////////
@@ -180,9 +176,6 @@ function getLocationOut() {
 
 function showPositionOut(position) {
 var dt = document.getElementById("daytime").value;
-var dhh = dt.getHours();
-if(dhh < 16 ){alert("ไม่สามารถบันทึกเวลาเวลากลับได้ โปรดตรวจสอบเวลากลับอีกครั้ง");
-liff.closeWindow();}else{
 var sel = document.getElementById("typea").value;
 var ntex = document.getElementById("nte").value;
      liff.getProfile().then(function(profile) {
@@ -203,7 +196,7 @@ var xmlhttp = new XMLHttpRequest();
         liff.closeWindow();
       }}); 
 }
-}
+
 
 
 
