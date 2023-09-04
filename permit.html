@@ -110,8 +110,8 @@ var mm = today.getMinutes();
 
 let dateTime = new Date().toISOString();
   dateTime = dateTime.split(".")[0];
-  dateTime = dateTime.slice(0, -3);
-document.getElementById("daytime").value = dateTime;
+  dateTime = dateTime.slice(0, -8);
+document.getElementById("daytime").value = dateTime+"08:30";
 document.getElementById("nte").value = "ปฏิบัติงานตามเวลาราชการจริง แต่ติดภาระกิจ";
 
 }
