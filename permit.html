@@ -108,6 +108,10 @@ today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
 var hh = today.getHours();
 var mm = today.getMinutes(); 
 
+let dateTime = new Date().toISOString();
+  dateTime = dateTime.split(".")[0];
+  dateTime = dateTime.slice(0, -3);
+document.getElementById("daytime").value = dateTime;
 
 }
 
