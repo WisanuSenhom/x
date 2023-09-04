@@ -14,10 +14,10 @@
     <center>
  <div class="container">
         <div class="login-box">
-            <h2>ลงเวลาปฏิบัติงาน</h2>
-           <p style="font-size:6px; color:#E0FFFF;">สำหรับทดลองการใช้งาน(ปรับปรุง 31/8/66)</p>
-            <iframe src="https://free.timeanddate.com/clock/i8z1mdj5/n3376/tlth39/fn14/fs20/fc0ef/tct/pct/ftb/th1" frameborder="0" width="93" height="26" allowtransparency="true"></iframe>
-            <form>
+            <h2>ชี้แจ้งการลงเวลาปฏิบัติงาน</h2>
+           <p style="font-size:14px; color:#E0FFFF;">ระบุ วันที่ เวลา มา ปฏิบัติงานจริง</p>
+            <form>             
+        <input type="datetime-local" id="daytime" class="forgot-pass"  name="daytime" required>     
 		<select  id="typea" class="btn2" >
   			<option value="">ปฏิบัติงานตามปกติ</option>
             		<option value="ปฏิบัติงานนอกสถานที่">ปฏิบัติงานนอกสถานที่</option>
@@ -28,19 +28,16 @@
   			<option value="มาช่วยราชการ">มาช่วยราชการ</option>
            		 <option value="อื่นๆ">อื่นๆ โปรดระบุเพิ่มเติม</option>
 		</select> 
+
 		    <div class="input-box">
-                    <input  id="nte" name="nte" type="text" placeholder="รายละเอียด" autofocus>
-                    <label>บันทึกเพิ่มเติม</label>
+                    <input  id="nte" name="nte" type="text" placeholder="รายละเอียด" required autofocus>
+                    <label>บันทึกชี้แจง</label>
                 </div>
-              <div class="forgot-pass">
-                    <a href="https://liff.line.me/1654797991-3mwO60Od">ลืมลงเวลา?</a>
-                </div>
-              <div id="cin" class="invisible"><button type="button" class="btn btn-success" onclick="getLocation()">ลงเวลามา</button></div>
-              <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger" onclick="getLocationOut()">ลงเวลากลับ</button></div>
-                  <div class="signup-link">
-                    <a href="https://liff.line.me/1654797991-BXng4Kgv">ลงทะเบียน</a>
-                </div>
-                <p id="demo" style="font-size:1px; color:#E0FFFF;"></p>
+       
+              <button id="cin" type="button" class="btn btn-success" onclick="getLocation()">ลงเวลามา</button>
+              <p></p>
+              <button id="cout" type="button" class="btn btn-danger" onclick="getLocationOut()">ลงเวลากลับ</button>
+               <p id="demo" style="font-size:6px; color:#E0FFFF;"></p>
             </form>
         </div>
 
@@ -111,14 +108,7 @@ today.toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
 var hh = today.getHours();
 var mm = today.getMinutes(); 
 
-   if(hh <= 15){
-          document.getElementById("cin").classList.remove('invisible');
-        }else if(hh >= 16){
-          document.getElementById("cout").classList.remove('invisible');
-            }else{
-alert("ไม่สามารถลงเวลามาทำงาน/เวลากลับ ได้ในช่วงเวลา 12.00-13.00 "+hh+":"+mm);
-liff.closeWindow();  
-            }
+
 }
 
 
@@ -145,6 +135,7 @@ function getLocation() {
 }
 
 function showPosition(position) {
+    var dt = document.getElementById("daytime").value;
 var sel = document.getElementById("typea").value;
 var ntex = document.getElementById("nte").value;
      liff.getProfile().then(function(profile) {
@@ -154,7 +145,7 @@ var ntex = document.getElementById("nte").value;
   x.innerHTML = "พิกัด: " + position.coords.latitude + 
   "," + position.coords.longitude;
 var xmlhttp = new XMLHttpRequest();
-        var theUrl = xurl+"?ctype=In&sel="+sel+"&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        var theUrl = xurl+"?ctype=In&sel="+sel+"&dt="+dt+"&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
             xmlhttp.onreadystatechange = function() {
@@ -180,6 +171,7 @@ function getLocationOut() {
 }
 
 function showPositionOut(position) {
+var dt = document.getElementById("daytime").value;
 var sel = document.getElementById("typea").value;
 var ntex = document.getElementById("nte").value;
      liff.getProfile().then(function(profile) {
@@ -189,7 +181,7 @@ var ntex = document.getElementById("nte").value;
   x.innerHTML = "พิกัด: " + position.coords.latitude + 
   "," + position.coords.longitude;
 var xmlhttp = new XMLHttpRequest();
-        var theUrl = xurl+"?ctype=Out&sel="+sel+"&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        var theUrl = xurl+"?ctype=Out&sel="+sel+"&dt="+dt+"&ntex="+ntex+"&xos="+xos+"&user="+uid+"&name="+uname+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
             xmlhttp.onreadystatechange = function() {
