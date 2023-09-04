@@ -142,7 +142,7 @@ function getLocation() {
 function showPosition(position) {
     var dt = document.getElementById("daytime").value;
 var dhh = dt.getHours();
-if(ddh > 5 && dhh < 9 ){alert("ไม่สามารถบันทึกเวลาเวลามาได้ โปรดตรวจสอบเวลามาอีกครั้ง");
+if(ddh < 5 || dhh > 9 ){alert("ไม่สามารถบันทึกเวลาเวลามาได้ โปรดตรวจสอบเวลามาอีกครั้ง");
 liff.closeWindow();}
 var sel = document.getElementById("typea").value;
 var ntex = document.getElementById("nte").value;
