@@ -114,7 +114,7 @@ let dateTime = new Date().toISOString();
   dateTime = dateTime.split(".")[0];
   dateTime = dateTime.slice(0, -8);
 document.getElementById("daytime").value = dateTime+"08:30";
-document.getElementById("nte").value = "ปฏิบัติงานตามเวลาราชการจริง แต่ติดภาระกิจ";
+// document.getElementById("nte").value = "ปฏิบัติงานตามเวลาราชการจริง แต่ติดภาระกิจ";
 
 }
 
@@ -147,10 +147,9 @@ var sel = document.getElementById("typea").value;
 var ntex = document.getElementById("nte").value;
 // ตรวจสอบความยาวของรหัส PIN
  if (ntex === null || ntex === 0 || ntex.length < 2 ) {
-  //alert("เลขบัตรประจำตัวประชาชน ต้องยาว 13 หลัก");
   Swal.fire(
     'ผิดพลาด!',
-    'เลขบัตรประจำตัวประชาชน ต้องยาว 13 หลัก!',
+    'โปรดระบุเหตุผล หรือคำชี้แจง!',
     'error'
   );
  
