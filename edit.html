@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+img {
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.icon {
+  padding: 10px;
+  background: dodgerblue;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid dodgerblue;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: dodgerblue;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<body onload="main()">
+
+<form  style="max-width:500px;margin:auto">
+    <div style="text-align: center;">
+        <img id ="upic"src="" alt="Avatar" style="width:200px">
+        <h2 id ="uname">ข้อมูลส่วนตัว</h2>  
+    </div>
+  
+  <div class="input-container">
+    <i class="fa fa-user icon"></i>
+    <input class="input-field" id="pname" type="text" placeholder="คำนำหน้า" name="pname">
+  </div>
+  <div class="input-container">
+    <i class="fa fa-user icon"></i>
+    <input class="input-field" id="fname" type="text" placeholder="ชื่อ" name="fname">
+  </div>
+  <div class="input-container">
+    <i class="fa fa-user icon"></i>
+    <input class="input-field" id="lname" type="text" placeholder="สกุล" name="lname">
+  </div>
+  <div class="input-container">
+    <i class="fa fa-user-md icon"></i>
+    <input class="input-field" id="job" type="text" placeholder="ตำแหน่ง" name="job">
+  </div>
+  <div class="input-container">
+    <i class="fa fa-hospital-o icon"></i>
+    <!-- <input class="input-field" type="text" placeholder="หน่วยงาน" name="usrnm"> -->
+    <select id="hos" name="hos">
+        <option value="สสอเซกา">สสอเซกา</option>
+        <option value="ซาง">ซาง</option>
+        <option value="ท่ากกแดง">ท่ากกแดง</option>
+        <option value="บ้านโคกกระแซ">บ้านโคกกระแซ</option>
+        <option value="บ้านต้อง">บ้านต้อง</option>
+        <option value="บ้านโคกโขง">บ้านโคกโขง</option>
+        <option value="ป่งไฮ">ป่งไฮ</option>
+        <option value="บ้านคำบอน">บ้านคำบอน</option>
+        <option value="น้ำจั้น">น้ำจั้น</option>
+        <option value="ท่าสะอาด">ท่าสะอาด</option>
+        <option value="หนองทุ่ม">หนองทุ่ม</option>
+        <option value="โสกก่าม">โสกก่าม</option>
+        <option value="บ้านท่าเชียงเครือ">บ้านท่าเชียงเครือ</option>
+      </select>
+  </div>
+
+
+  <button type="button" class="btn" onclick="updateData()">ปรับปรุงข้อมูล</button>
+</form>
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="app.js"></script>
+</body>
+</html>
