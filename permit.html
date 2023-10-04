@@ -170,8 +170,17 @@ var xmlhttp = new XMLHttpRequest();
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
         }
-        alert(jsonResponse.desc);
-        liff.closeWindow();
+		        swal.fire({
+                  position: 'center-start',
+                  confirmButtonColor: '#1450A3',
+                  confirmButtonText: 'ตกลง',
+                text: jsonResponse.desc,
+                
+              }).then(function() {
+                liff.closeWindow();
+            });  
+        // alert(jsonResponse.desc);
+        // liff.closeWindow();
       }});  
 }
 
@@ -205,8 +214,17 @@ var xmlhttp = new XMLHttpRequest();
         if (this.readyState == 4 && this.status == 200) {
             var jsonResponse = JSON.parse(this.responseText);
         }
-        alert(jsonResponse.desc);
-        liff.closeWindow();
+		    	        swal.fire({
+                  position: 'center-start',
+                  confirmButtonColor: '#1450A3',
+                  confirmButtonText: 'ตกลง',
+                text: jsonResponse.desc,
+                
+              }).then(function() {
+                liff.closeWindow();
+            });  
+        // alert(jsonResponse.desc);
+        // liff.closeWindow();
       }}); 
 }
 
