@@ -41,7 +41,7 @@
               <div id="creq" class="invisible"><button id="creq" type="button" class="btn btn-primary" onclick="window.location.href='permit.html'">ลงเวลา(บันทึกชี้แจง)</button></div>
               <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger" onclick="getLocationOut()">ลงเวลากลับ</button></div>
                   <div class="signup-link">
-                    <a href="https://liff.line.me/1654797991-BXng4Kgv">ลงทะเบียน</a>
+                   <a data-toggle="modal" data-target="#exampleModal">เช็คระยะ</a>
                 </div>
 		    <div style="text-align: center;">
                 <p id="demo" style="font-size:1px; color:#E0FFFF;"></p>
@@ -100,7 +100,28 @@
         <span style="--i:48;"></span>
         <span style="--i:49;"></span>
     </div>
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ทดสอบระยะห่างจากสำนักงาน</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<p id="cdemo" ></p>
+      </div>
+      <div class="modal-footer">
+<!--         <div class="signup-link"><a href="https://liff.line.me/1654797991-BXng4Kgv">ลงทะเบียน</a></div> -->
+        <button type="button" class="btn btn-success" onclick="getLocationcheck()" >ทดสอบ</button>
+	<button type="button" class="btn btn-info" onclick="window.location.href='https://liff.line.me/1654797991-BXng4Kgv';" >ลงทะเบียน</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa-solid fa-xmark">ปิด</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
 window.onload = function() {
@@ -108,7 +129,7 @@ window.onload = function() {
 }
 
 const xurl = "https://script.google.com/macros/s/AKfycbwhSS79s4ce9Tt8PFkoKzC7VYdB2szZBBatTryw03cvFQh-x1l4NEEsAy28b6s7SE8e/exec";
-
+const curl = "https://script.google.com/macros/s/AKfycbwO2YNyCJar3dVQQ3fmWNmgzWDWVlo4D5Ska7pWLEXxcHWeVtFbeLHUTrKodLkDqdcU/exec";
 function checks(){
 
 var today = new Date();
@@ -224,7 +245,50 @@ var xmlhttp = new XMLHttpRequest();
       }});  
 }
 
+// ตรวจสอบพิกัด
+function getLocationcheck() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPositioncheck);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
 
+function showPositioncheck(position) {
+     liff.getProfile().then(function(profile) {
+            var uid = profile.userId;
+     x.innerHTML = "พิกัด: " + position.coords.latitude + 
+  "," + position.coords.longitude;
+var xmlhttp = new XMLHttpRequest();
+        var theUrls = curl+"?id="+uid+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        xmlhttp.open('GET', theUrls);
+        xmlhttp.send();
+            xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var jsonResponse = JSON.parse(this.responseText);
+        }
+	 const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-start',
+  showConfirmButton: false,
+  timer: 4000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
+Toast.fire({
+  icon: 'success',
+  title: 'การทดสอบสำเร็จ'
+})
+        
+	c.innerHTML = c.innerHTML+"<br>"+jsonResponse.desc;
+       // alert(jsonResponse.desc);
+       // liff.closeWindow();
+      }});  
+}
 
 </script>
 
