@@ -226,6 +226,15 @@ var dt = document.getElementById("daytime").value;
 }else{	
 var sel = document.getElementById("typea").value;
 var ntex = document.getElementById("nte").value;
+ if (ntex === null || ntex === 0 || ntex.length < 2 ) {
+  Swal.fire(
+    'ผิดพลาด!',
+    'โปรดระบุเหตุผล หรือคำชี้แจง!',
+    'error'
+  );
+ 
+  return;
+}
      liff.getProfile().then(function(profile) {
             var uid = profile.userId;
             var uname = profile.displayName;
