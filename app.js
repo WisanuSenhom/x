@@ -80,9 +80,9 @@ function Auth() {
 }
 
 function notify() {
-  var myParam = window.location.search;
-  var exc = myParam.split('code=')[1].split('&')[0];
-  var excst = myParam.split('state=')[1].split('&')[0];
+  let myParam = window.location.search;
+  let exc = myParam.split('code=')[1].split('&')[0];
+  // let excst = myParam.split('state=')[1].split('&')[0];
   document.querySelector('#token').value = exc
 }
 
