@@ -88,7 +88,7 @@ function notify() {
 
 
   async function main() {
-    await liff.init({ liffId: "1654797991-nkGwelwo" })
+    await liff.init({ liffId: "1654797991-V1eJqnJ4" })
       if (liff.isLoggedIn()) {
         getProfile() 
       } else {
