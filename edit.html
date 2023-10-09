@@ -56,6 +56,26 @@ img {
   opacity: 0.9;
 }
 
+.btnline {
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btntoken {
+  background-color: yellowgreen;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
 .btn:hover {
   opacity: 1;
 }
@@ -104,7 +124,19 @@ img {
         <option value="บ้านท่าเชียงเครือ">บ้านท่าเชียงเครือ</option>
       </select>
   </div>
+  <div class="input-container">
+    <i class="fa fa-bell icon"></i>
+    <input class="input-field" id="token" type="text" placeholder="LINE TOKEN" name="job">
+  </div>
 
+  
+ <button type="button"  class="btnline" onclick="Auth()">ออก Token Line Notify</button>
+<p></p>
+
+ <button type="button"  class="btntoken" onclick="notify()">รับค่า Token</button>
+
+
+  <p></p>
 
   <button type="button" class="btn" onclick="updateData()">ปรับปรุงข้อมูล</button>
 </form>
