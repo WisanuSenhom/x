@@ -37,10 +37,9 @@
               <div class="forgot-pass">
                     <!--a href="https://liff.line.me/1654797991-3mwO60Od">ลืมลงเวลา?</a-->
                 </div>
-              <div id="cin" class="invisible"><button id="cin" type="button" class="btn btn-success" onclick="getLocation()">ลงเวลามา</button></div>
+              <div id="cin" class="invisible"><button id="cin" type="button" class="btn btn-success" onclick="getLocationcheckin()" data-toggle="modal" data-target="#inModal">ลงเวลามา</button></div>
               <div id="creq" class="invisible"><button id="creq" type="button" class="btn btn-primary" onclick="window.location.href='https://liff.line.me/1654797991-8K5AMpAz';">ลงเวลา(บันทึกชี้แจง)</button></div>
-              <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger" onclick="getLocationOut()">ลงเวลากลับ</button></div>
-                  <div class="signup-link">
+              <div id="cout" class="invisible"><button id="cout" type="button" class="btn btn-danger" onclick="getLocationcheckout()" data-toggle="modal" data-target="#outModal">ลงเวลากลับ</button></div>     <div class="signup-link">
                    <a data-toggle="modal" data-target="#exampleModal">ตรวจสอบพิกัด/ลงทะเบียน</a>
                 </div>
 		    <div style="text-align: center;">
@@ -100,6 +99,48 @@
         <span style="--i:48;"></span>
         <span style="--i:49;"></span>
     </div>
+<!-- Modal-in -->
+<div class="modal fade" id="inModal" tabindex="-1" role="dialog" aria-labelledby="inModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="inModalLabel">กรุณาตรวจสอบพิกัดและกดยืนยันการลงเวลาปฏิบัติงาน</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<p id="indemo" >กำลังโหลดข้อมูล...</p>
+      </div>
+      <div class="modal-footer">
+<!--         <div class="signup-link"><a href="https://liff.line.me/1654797991-BXng4Kgv">ลงทะเบียน</a></div> -->
+        <button type="button" class="btn btn-success" onclick="getLocation()" >ยืนยันการลงเวลาปฏิบัติงาน</button>
+	      <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa-solid fa-xmark">ปิด</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal-out -->
+<div class="modal fade" id="outModal" tabindex="-1" role="dialog" aria-labelledby="outModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="outModalLabel">กรุณาตรวจสอบพิกัดและกดยืนยันการลงเวลากลับ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<p id="outdemo" >กำลังโหลดข้อมูล...</p>
+      </div>
+      <div class="modal-footer">
+<!--         <div class="signup-link"><a href="https://liff.line.me/1654797991-BXng4Kgv">ลงทะเบียน</a></div> -->
+        <button type="button" class="btn btn-danger" onclick="getLocationOut()" >ยืนยันการลงเวลากลับ</button>
+	      <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa-solid fa-xmark">ปิด</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -161,6 +202,9 @@ function initializeLiff(myLiffId) {
 
 var x = document.getElementById("demo");
 var c = document.getElementById("cdemo");
+var inx = document.getElementById("indemo");
+var outx = document.getElementById("outdemo");
+	
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
@@ -285,6 +329,95 @@ Toast.fire({
 })
         
 	c.innerHTML = c.innerHTML+"<br>"+jsonResponse.desc;
+       // alert(jsonResponse.desc);
+       // liff.closeWindow();
+      }});  
+}
+// ตรวจสอบพิกัด มา
+function getLocationcheckin() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPositioncheckin);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPositioncheckin(position) {
+     liff.getProfile().then(function(profile) {
+            var uid = profile.userId;
+     x.innerHTML = "พิกัด: " + position.coords.latitude + 
+  "," + position.coords.longitude;
+var xmlhttp = new XMLHttpRequest();
+        var theUrls = curl+"?id="+uid+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        xmlhttp.open('GET', theUrls);
+        xmlhttp.send();
+            xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var jsonResponse = JSON.parse(this.responseText);
+        }
+	 const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-start',
+  showConfirmButton: false,
+  timer: 4000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
+Toast.fire({
+  icon: 'success',
+  title: 'โหลดตำแหน่งปัจจุบันสำเร็จ'
+})
+        
+	inx.innerHTML = jsonResponse.desc;
+       // alert(jsonResponse.desc);
+       // liff.closeWindow();
+      }});  
+}
+
+// ตรวจสอบพิกัด กลับ
+function getLocationcheckout() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPositioncheckout);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPositioncheckout(position) {
+     liff.getProfile().then(function(profile) {
+            var uid = profile.userId;
+     x.innerHTML = "พิกัด: " + position.coords.latitude + 
+  "," + position.coords.longitude;
+var xmlhttp = new XMLHttpRequest();
+        var theUrls = curl+"?id="+uid+"&lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        xmlhttp.open('GET', theUrls);
+        xmlhttp.send();
+            xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var jsonResponse = JSON.parse(this.responseText);
+        }
+	 const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-start',
+  showConfirmButton: false,
+  timer: 4000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
+Toast.fire({
+  icon: 'success',
+  title: 'โหลดตำแหน่งปัจจุบันสำเร็จ'
+})
+        
+	outx.innerHTML = jsonResponse.desc;
        // alert(jsonResponse.desc);
        // liff.closeWindow();
       }});  
