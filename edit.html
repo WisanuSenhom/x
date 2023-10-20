@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ปรับปรุงข้อมูลส่วนตัว</title>
 <!-- Add icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -88,7 +90,10 @@ img {
         <img id ="upic"src="" alt="Avatar" style="width:200px">
         <h2 id ="uname">ข้อมูลส่วนตัว</h2>  
     </div>
-  
+    <div class="input-container">
+      <i class="fa fa-id-card icon"></i>
+      <input class="input-field" id="cid" type="tel" placeholder="เลขบัตรประจำตัวประชาชน" name="cid">
+    </div>
   <div class="input-container">
     <i class="fa fa-user icon"></i>
     <input class="input-field" id="pname" type="text" placeholder="คำนำหน้า" name="pname">
@@ -98,7 +103,7 @@ img {
     <input class="input-field" id="fname" type="text" placeholder="ชื่อ" name="fname">
   </div>
   <div class="input-container">
-    <i class="fa fa-user icon"></i>
+    <i class="fa fa-users icon"></i>
     <input class="input-field" id="lname" type="text" placeholder="สกุล" name="lname">
   </div>
   <div class="input-container">
@@ -126,7 +131,7 @@ img {
   </div>
   <div class="input-container">
     <i class="fa fa-bell icon"></i>
-    <input class="input-field" id="token" type="text" placeholder="LINE TOKEN" name="job">
+    <input class="input-field" id="token" type="text" placeholder="LINE TOKEN" name="linetoken">
   </div>
 
   
@@ -134,14 +139,12 @@ img {
 <p></p>
 
  <button type="button"  class="btntoken" onclick="notify()">รับค่า Token</button>
-
-
   <p></p>
-
   <button type="button" class="btn" onclick="updateData()">ปรับปรุงข้อมูล</button>
 </form>
 <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="app.js"></script>
+<script src="md5.js"></script>
 </body>
 </html>
